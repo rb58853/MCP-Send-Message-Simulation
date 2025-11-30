@@ -1,0 +1,14 @@
+name: "Send Message Simulation MCP"
+
+services:
+  server-mcp:
+    image: send_message_simulation_mcp:latest
+    container_name: send_message_simulation_mcp:latest
+    build:
+      context: .
+      dockerfile: dockerfile
+      tags:
+        - send_message_simulation_mcp:latest
+    restart: unless-stopped
+    ports:
+      - 8765:8765
