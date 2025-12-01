@@ -26,7 +26,7 @@ There is also a help route:
 - Start the server:
 
     ```shell
-    python main.py --host 0.0.0.0 --port 8765
+    python3 main.py --host 0.0.0.0 --port 8765
     ```
 
 ### Use Docker (image and container)
