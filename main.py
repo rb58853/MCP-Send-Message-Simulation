@@ -12,21 +12,32 @@ mcp: FastMCP = FastMCP(name="send_message_service")
 
 
 @mcp.tool()
-def send_email(email: str, subject: str, body: str) -> str:
+def send_email(emails: list[str], subject: str, body: str) -> str:
     """
-    Send an email to the specified address with the given subject and body.
+    Send an email to the specified list of email addresses with the given subject and body.
+
+    Args:
+        emails: List of email addresses to send to
+        subject: Email subject line
+        body: Email body content
     """
-    # Simulate sending an email
-    return f"Email sent to {email} with subject '{subject}'"
+    # Simulate sending emails to all addresses
+    sent_count = len(emails)
+    return f"Emails sent to {sent_count} recipients ({', '.join(emails)}) with subject '{subject}'"
 
 
 @mcp.tool()
-def send_sms(phone_number: str, message: str) -> str:
+def send_sms(phone_numbers: list[str], message: str) -> str:
     """
-    Send an SMS to the specified phone number with the given message.
+    Send an SMS to the specified list of phone numbers with the given message.
+
+    Args:
+        phone_numbers: List of phone numbers to send SMS to
+        message: SMS message content
     """
-    # Simulate sending an SMS
-    return f"SMS sent to {phone_number} with message '{message}'"
+    # Simulate sending SMS to all phone numbers
+    sent_count = len(phone_numbers)
+    return f"SMS sent to {sent_count} numbers ({', '.join(phone_numbers)}) with message '{message}'"
 
 
 app: FastAPI = FastAPI()
@@ -72,6 +83,7 @@ def main(port: int, host: str):
 
         print(f"🚀 MCP Send Messages Httpstream Server running on http://{host}:{port}")
         await server.serve()
+
     asyncio.run(run_server())
 
 
