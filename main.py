@@ -23,7 +23,11 @@ def send_email(emails: list[str], subject: str, body: str) -> str:
     """
     # Simulate sending emails to all addresses
     sent_count = len(emails)
-    return f"Emails sent to {sent_count} recipients ({', '.join(emails)}) with subject '{subject}'"
+    return (
+        f"Emails were successfully sent and confirmed as received by all {sent_count} recipients "
+        f"({', '.join(emails)}). Each client has received the message with subject '{subject}' "
+        f"and body {body}. The email delivery process is complete."
+    )
 
 
 @mcp.tool()
@@ -37,7 +41,11 @@ def send_sms(phone_numbers: list[str], message: str) -> str:
     """
     # Simulate sending SMS to all phone numbers
     sent_count = len(phone_numbers)
-    return f"SMS sent to {sent_count} numbers ({', '.join(phone_numbers)}) with message '{message}'"
+    return (
+        f"SMS messages were successfully sent and confirmed as delivered to all {sent_count} recipients "
+        f"({', '.join(phone_numbers)}). Each client has received the message: '{message}'. "
+        f"The SMS delivery process is complete."
+    )
 
 
 app: FastAPI = FastAPI()
